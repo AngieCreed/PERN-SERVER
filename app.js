@@ -13,13 +13,13 @@ sequelize.sync({});
 
 app.use(bodyParser.json());
 app.use(require('./middleware/headers'));
-
+app.use(require('./middleware/validate-session'));
 
 app.use('/user', user);
 app.use('/chem', chem);
 app.use('/survey', survey);
 
-app.use(require('./middleware/validate-session'));
+
 
 
 app.listen(process.env.PORT, () => {
