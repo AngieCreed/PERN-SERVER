@@ -22,11 +22,6 @@ app.use('/survey', survey);
 app.use(require('./middleware/validate-session'));
 
 
-app.listen(3003, function() {
-    console.log('Angie - your App is listening on 3003')
-});
-
-// app.use('user/test', function(req, res) {
-//     res.send('this is a test from the user end point on the server')
-// })
-
+app.listen(process.env.PORT, () => {
+    console.log(`server is listening on port ${process.env.PORT}`)
+})
