@@ -1,9 +1,13 @@
 require('dotenv').config();
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(process.env.DATABASE_URL || `postgresql://postgres:${encodeURIComponent(process.enc.PASS)}@localhost/chemAPI`, {
     dialect: 'postgres',
 });
+
+// const sequelize = new Sequelize(process.env.DATABASE_URL || `postgresql://postgres:${encodeUriComponent(process.enc.PASS)}`@localhost/pies, {
+//     dialect: 'postgres',
+// })
 
 sequelize.authenticate().then(
     function() {
