@@ -5,7 +5,7 @@ var validateSession = require('../middleware/validate-session');
 
 
 
-router.get('/', validateSession, (req, res) => {
+router.get('/:id', validateSession, (req, res) => {
 
     Chem.findAll()
     
