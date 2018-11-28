@@ -20,8 +20,12 @@ module.exports = (sequelize, DataTypes) => {
         chLevel: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        
+        owner: {
+            type: DataTypes.INTEGER,
         }
-
+    
     })
 
     return Chem

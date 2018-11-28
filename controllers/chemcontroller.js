@@ -4,15 +4,18 @@ var validateSession = require('../middleware/validate-session');
 
 
 
-
 router.get('/', validateSession, (req, res) => {
-
-    Chem.findAll()
-    
-    .then(chem => res.status(200).json(chem))
-    .catch(err => res.status(500).json({error: err}))
-
-})
+    var userid = req.body.user.id;
+        
+    Chem.findAll({ where: {owner: userid}}).then(
+        function findAllSuccess(data){
+            res.json(data)
+        },
+        function findAllError(err){
+            res.send(500, err.message)
+        }
+    )
+    })
 
 
 router.post('/add', validateSession, (req, res) => {
@@ -23,6 +26,7 @@ router.post('/add', validateSession, (req, res) => {
             taLevel: req.body.chem.taLevel,
             cyaLevel: req.body.chem.cyaLevel,
             chLevel: req.body.chem.chLevel
+            
          }
 
     Chem.create(chemFromRequest)

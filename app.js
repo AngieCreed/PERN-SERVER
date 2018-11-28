@@ -8,7 +8,7 @@ var survey = require('./controllers/surveycontroller');
 var bodyParser = require('body-parser');
 
 
-sequelize.sync({});
+sequelize.sync();
 
 
 app.use(bodyParser.json());
